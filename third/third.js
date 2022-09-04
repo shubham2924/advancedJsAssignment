@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 async function fetchData() {
   try {
     const response = await fetch("https://api.nobelprize.org/v1/prize.json");
@@ -34,6 +34,7 @@ async function fetchData() {
         }
       });
     });
+    document.getElementById("names").innerHTML=finalop
     console.log(finalop);
     console.log(c);
   } catch (error) {

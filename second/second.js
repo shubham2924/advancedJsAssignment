@@ -16,7 +16,27 @@ async function func(){
         let license = data.items[6].license.name
         let score = data.items[6].score
 
-        fetch('https://api.github.com/users/sindresorhus')
+        
+
+        // console.log(data.items[6]);
+         let opdata={
+          name: name,
+          full_name: full_name,
+          private: repo_visibility,
+          licenseName: license,
+          score: score
+        }
+        document.getElementById("name").innerHTML="Name is: "+ opdata.name
+        document.getElementById("fullname").innerHTML="Full name is:"+opdata.full_name
+        document.getElementById("licensename").innerHTML="License name is: "+ opdata.licenseName
+        document.getElementById("private").innerHTML="Repo visibility status: "+ opdata.private
+        document.getElementById("score").innerHTML="Score is: "+ opdata.score
+        console.log(opdata)
+      } else {
+        console.log(`error ${request.status} ${request.statusText}`);
+      }
+    };
+    fetch('https://api.github.com/users/sindresorhus')
         .then(data=>{
             return data.json();
         })
@@ -27,23 +47,13 @@ async function func(){
                 followers:ff,
                 following:fff
             }
+             document.getElementById("followers").innerHTML="followers count is: "+userfollowdata.followers
+            document.getElementById("following").innerHTML="following count is: "+ userfollowdata.following
             console.log(userfollowdata)
+
             // let fer = profileData.followers
             // let fow = profileData.following
         })
-
-        // console.log(data.items[6]);
-        let opdata={
-          name: name,
-          full_name: full_name,
-          private: repo_visibility,
-          licenseName: license,
-          score: score
-        }
-        console.log(opdata)
-      } else {
-        console.log(`error ${request.status} ${request.statusText}`);
-      }
-    };
+        
 }
 func();
